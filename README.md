@@ -15,7 +15,7 @@ Repositorio de práctica y portafolio técnico enfocado en la automatización de
 ## 📂 Estructura del Proyecto
 
 ```text
-mi-proyecto-playwright/
+playwright-portafolio/
 │
 ├── pages/                  # Clases con los selectores y acciones (POM)
 │   ├── LoginPage.ts
