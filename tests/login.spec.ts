@@ -6,7 +6,6 @@ test('Validar redirección de autenticación usando POM', async ({ page }) => {
   const loginPage = new LoginPage(page);
 
   await loginPage.goto();
-  await loginPage.clickFormAuthentication();
 
   await expect(page).toHaveURL(/.*login/);
 });
@@ -16,7 +15,6 @@ test('Debería iniciar sesión exitosamente con credenciales válidas', async ({
 
   // 1. Navegar y llegar a la página de login
   await loginPage.goto();
-  await loginPage.clickFormAuthentication();
 
   // 2. Ejecutar login con las credenciales provistas por la página
   await loginPage.login('tomsmith', 'SuperSecretPassword!');

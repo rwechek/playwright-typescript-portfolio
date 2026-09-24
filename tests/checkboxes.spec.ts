@@ -5,9 +5,8 @@ import { CheckboxesPage } from '../pages/CheckboxesPage';
 test('Debería validar y modificar el estado de los checkboxes', async ({ page }) => {
   const checkboxesPage = new CheckboxesPage(page);
 
-  // 1. Navegar al inicio y entrar a la sección de Checkboxes
+  // 1. Entrar a la sección de Checkboxes
   await checkboxesPage.goto();
-  await checkboxesPage.clickCheckboxesLink();
 
   await expect(page).toHaveURL(/.*checkboxes/);
 

@@ -3,7 +3,6 @@ import { Page, Locator } from '@playwright/test';
 
 export class LoginPage {
   readonly page: Page;
-  readonly formAuthenticationLink: Locator;
   readonly usernameInput: Locator;
   readonly passwordInput: Locator;
   readonly loginButton: Locator;
@@ -20,11 +19,7 @@ export class LoginPage {
   }
 
   async goto() {
-    await this.page.goto('https://the-internet.herokuapp.com/');
-  }
-
-  async clickFormAuthentication() {
-    await this.formAuthenticationLink.click();
+    await this.page.goto('/login');
   }
 
   // Método para realizar el inicio de sesión completo

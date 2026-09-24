@@ -3,22 +3,16 @@ import { Page, Locator } from '@playwright/test';
 
 export class CheckboxesPage {
   readonly page: Page;
-  readonly checkboxesLink: Locator;
   readonly checkboxes: Locator;
 
   constructor(page: Page) {
     this.page = page;
     this.checkboxesLink = page.getByRole('link', { name: 'Checkboxes' });
-    // Localizador para los checkboxes de la página
     this.checkboxes = page.locator('input[type="checkbox"]');
   }
 
   async goto() {
-    await this.page.goto('https://the-internet.herokuapp.com/');
-  }
-
-  async clickCheckboxesLink() {
-    await this.checkboxesLink.click();
+    await this.page.goto('/checkboxes');
   }
 
   // Método para seleccionar el primer checkbox
