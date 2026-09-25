@@ -3,7 +3,6 @@ import { Page, Locator } from '@playwright/test';
 
 export class DynamicLoadingPage {
   readonly page: Page;
-  readonly dynamicloading: Locator;
   readonly example1Link: Locator;
   readonly example2Link: Locator;
   readonly startButton: Locator;

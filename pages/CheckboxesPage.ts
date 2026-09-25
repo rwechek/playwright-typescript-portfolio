@@ -7,7 +7,6 @@ export class CheckboxesPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.checkboxesLink = page.getByRole('link', { name: 'Checkboxes' });
     this.checkboxes = page.locator('input[type="checkbox"]');
   }
 
