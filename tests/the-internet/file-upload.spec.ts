@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { FileUploadPage } from '../../pages/FileUploadPage';
+import { FileUploadPage } from '../../pages/the-internet/FileUploadPage';
 import * as path from 'path';
 import * as fs from 'fs';
 

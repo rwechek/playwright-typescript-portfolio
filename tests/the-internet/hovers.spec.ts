@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { HoversPage } from '../../pages/HoversPage';
+import { HoversPage } from '../../pages/the-internet/HoversPage';
 
 test.describe('Pruebas de Hovers', () => {
   let hoversPage: HoversPage;

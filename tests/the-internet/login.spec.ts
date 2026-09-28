@@ -1,6 +1,6 @@
 // tests/login.spec.ts
 import { test, expect } from '@playwright/test';
-import { LoginPage } from '../../pages/LoginPage';
+import { LoginPage } from '../../pages/the-internet/LoginPage';
 
 test('Validar redirección de autenticación usando POM', async ({ page }) => {
   const loginPage = new LoginPage(page);

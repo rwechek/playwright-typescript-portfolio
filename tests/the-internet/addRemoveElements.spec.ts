@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { AddRemoveElementsPage } from "../../pages/AddRemoveElementsPage";
+import { AddRemoveElementsPage } from "../../pages/the-internet/AddRemoveElementsPage";
 
 test("Debería dar clic al botón de adicionar un elemento", async ({ page }) => {
   const addRemoveElementsPage = new AddRemoveElementsPage(page);

@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { BasicAuthPage } from "../../pages/BasicAuthPage";
+import { BasicAuthPage } from "../../pages/the-internet/BasicAuthPage";
 
 test("Debería autenticarse exitosamente con Basic Auth", async ({ page }) => {
   const basicAuthPage = new BasicAuthPage(page);

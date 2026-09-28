@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { InfiniteScrollPage } from "../../pages/InfiniteScrollPage";
+import { InfiniteScrollPage } from "../../pages/the-internet/InfiniteScrollPage";
 
 test.describe("Validación de Infinite Scroll para herokuapp", () => {
   let infiniteScrollPage: InfiniteScrollPage;

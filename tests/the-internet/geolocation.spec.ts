@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { GeolocationPage } from '../../pages/GeolocationPage';
+import { GeolocationPage } from '../../pages/the-internet/GeolocationPage';
 
 test.describe('Validación de Geolocation en herokuapp', () => {
   

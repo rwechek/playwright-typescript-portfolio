@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { FramesPage } from '../../pages/FramesPage';
+import { FramesPage } from '../../pages/the-internet/FramesPage';
 
 test('Debería interactuar y validar el texto de los diferentes Nested Frames', async ({ page }) => {
     const framesPage = new FramesPage(page);
