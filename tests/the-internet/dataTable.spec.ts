@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { DataTablePage } from "../pages/DataTablePage";
+import { DataTablePage } from "../../pages/DataTablePage";
 
 test.describe("Validación de Data Tables en The Internet", () => {
   let tablesPage: DataTablePage;

@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { DropdownPage } from '../pages/DropdownPage';
+import { DropdownPage } from '../../pages/DropdownPage';
 
 test('Debería dar clic a la opcion 1', async ({ page }) => {
 

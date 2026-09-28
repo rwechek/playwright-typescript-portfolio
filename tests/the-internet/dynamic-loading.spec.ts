@@ -1,6 +1,6 @@
 // tests/dynamic-loading.spec.ts
 import { test, expect } from '@playwright/test';
-import { DynamicLoadingPage } from '../pages/DynamicLoadingPage';
+import { DynamicLoadingPage } from '../../pages/DynamicLoadingPage';
 
 test('Debería manejar la carga dinámica y mostrar "Hello World!"', async ({ page }) => {
   const dynamicPage = new DynamicLoadingPage(page);

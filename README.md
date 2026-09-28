@@ -34,22 +34,26 @@ playwright-portafolio/
 │   ├── LoginPage.ts
 │   └── MultipleWindowsPage.ts
 │
-├── tests/                  # Archivos de pruebas E2E
-│   ├── addRemoveElements.spec.ts
-│   ├── basic-auth.spec.ts
-│   ├── checkboxes.spec.ts
-│   ├── dataTable.spec.ts
-│   ├── drag-and-drop.spec.ts
-│   ├── dropdown.spec.ts
-│   ├── dynamic-loading.spec.ts
-│   ├── file-upload.spec.ts
-│   ├── frames.spec.ts
-│   ├── geolocation.spec.ts
-│   ├── hovers.spec.ts
-│   ├── infiniteScroll.spec.ts
-│   ├── javascript-alerts.spec.ts
-│   ├── login.spec.ts
-│   └── multipleWindows.spec.ts
+├── tests/                  # Directorio principal de pruebas E2E
+│   ├── the-internet/       # Proyecto: The Internet (Herokuapp)
+│   │   ├── addRemoveElements.spec.ts
+│   │   ├── basic-auth.spec.ts
+│   │   ├── checkboxes.spec.ts
+│   │   ├── dataTable.spec.ts
+│   │   ├── drag-and-drop.spec.ts
+│   │   ├── dropdown.spec.ts
+│   │   ├── dynamic-loading.spec.ts
+│   │   ├── file-upload.spec.ts
+│   │   ├── frames.spec.ts
+│   │   ├── geolocation.spec.ts
+│   │   ├── hovers.spec.ts
+│   │   ├── infiniteScroll.spec.ts
+│   │   ├── javascript-alerts.spec.ts
+│   │   ├── login.spec.ts
+│   │   └── multipleWindows.spec.ts
+│   │
+│   └── saucedemo/          # Proyecto: SauceDemo (Próximamente)
 │
+├── playwright.config.ts    # Configuración centralizada de Projects y baseURLs
 ├── package.json
 └── tsconfig.json

@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { JavaScriptAlertsPage } from '../pages/JavaScriptAlertsPage';
+import { JavaScriptAlertsPage } from '../../pages/JavaScriptAlertsPage';
 
 test.describe('Pruebas de JavaScript Alerts', () => {
   let alertsPage: JavaScriptAlertsPage;

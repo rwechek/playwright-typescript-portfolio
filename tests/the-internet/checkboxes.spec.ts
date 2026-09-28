@@ -1,6 +1,6 @@
 // tests/checkboxes.spec.ts
 import { test, expect } from '@playwright/test';
-import { CheckboxesPage } from '../pages/CheckboxesPage';
+import { CheckboxesPage } from '../../pages/CheckboxesPage';
 
 test('Debería validar y modificar el estado de los checkboxes', async ({ page }) => {
   const checkboxesPage = new CheckboxesPage(page);

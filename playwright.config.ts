@@ -43,6 +43,22 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
+      name: 'the-internet',
+      testDir: './tests/the-internet',
+      use: { 
+        ...devices['Desktop Chrome'],
+        baseURL: 'https://the-internet.herokuapp.com' 
+      },
+    },
+    {
+      name: 'saucedemo',
+      testDir: './tests/saucedemo',
+      use: { 
+        ...devices['Desktop Chrome'],
+        baseURL: 'https://www.saucedemo.com' 
+      },
+    },
+    {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },

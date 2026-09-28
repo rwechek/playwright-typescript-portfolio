@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { MultipleWindowsPage } from '../pages/MultipleWindowsPage';
+import { MultipleWindowsPage } from '../../pages/MultipleWindowsPage';
 
 test('Debería abrir una nueva ventana y mostrar "New Window"', async ({ page, context }) => {
     const multipleWindowsPage = new MultipleWindowsPage(page);

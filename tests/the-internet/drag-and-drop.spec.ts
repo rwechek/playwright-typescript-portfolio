@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { DragAndDropPage } from "../pages/DragAndDropPage";
+import { DragAndDropPage } from "../../pages/DragAndDropPage";
 
 test.describe("Validación de Drag and drop para herokuapp", () => {
   let dragAndDropPage: DragAndDropPage;
