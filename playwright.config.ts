@@ -26,7 +26,7 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
-     baseURL: 'https://the-internet.herokuapp.com',
+     //baseURL: 'https://the-internet.herokuapp.com',
 
      // Configuración de capturas automáticas:
     // 'only-on-failure' toma la captura solo si el test falla (ahorra espacio).
@@ -43,7 +43,7 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'the-internet',
+      name: 'the-internet-chromium',
       testDir: './tests/the-internet',
       use: { 
         ...devices['Desktop Chrome'],
@@ -51,13 +51,14 @@ export default defineConfig({
       },
     },
     {
-      name: 'saucedemo',
+      name: 'saucedemo-chromium',
       testDir: './tests/saucedemo',
       use: { 
         ...devices['Desktop Chrome'],
         baseURL: 'https://www.saucedemo.com' 
       },
     },
+    /*
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
@@ -72,6 +73,7 @@ export default defineConfig({
       name: 'webkit',
       use: { ...devices['Desktop Safari'] },
     },
+    */
 
     /* Test against mobile viewports. */
     // {

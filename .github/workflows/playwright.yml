@@ -25,7 +25,7 @@ jobs:
       run: npx playwright install chromium --with-deps # Instalamos solo chromium para optimizar tiempo y recursos en la nube
       
     - name: Run Playwright tests
-      run: npx playwright test --project=chromium    # Ejecutamos exclusivamente el proyecto de Chromium
+      run: npx playwright test  # Ejecutamos todos los proyectos
       
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
