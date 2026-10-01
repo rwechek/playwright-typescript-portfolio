@@ -1,0 +1,13 @@
+{
+  "id": "petstore3-env",
+  "name": "Petstore3 Environment",
+  "values": [
+    {
+      "key": "baseUrl",
+      "value": "https://petstore3.swagger.io",
+      "type": "default",
+      "enabled": true
+    }
+  ],
+  "_postman_variable_scope": "environment"
+}

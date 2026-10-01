@@ -11,6 +11,7 @@
   "devDependencies": {
     "@playwright/test": "^1.63.0",
     "@types/node": "^26.6.2",
-    "newman": "^6.2.2"
+    "newman": "^6.2.2",
+    "openapi-to-postmanv2": "^6.3.3"
   }
 }

@@ -24,8 +24,11 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install chromium --with-deps # Instalamos solo chromium para optimizar tiempo y recursos en la nube
 
-    - name: Run API Tests with Newman
+    - name: Run API Tests with Newman Reqres
       run: npx newman run postman/reqres.collection.json -e postman/reqres.environment.json
+
+    - name: Run API Tests with Newman Petstore3
+      run: npx newman run postman/petstore.collection.json -e postman/petstore3.environment.json
       
     - name: Run Playwright tests
       run: npx playwright test  # Ejecutamos todos los proyectos
