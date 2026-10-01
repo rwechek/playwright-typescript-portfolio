@@ -1,0 +1,13 @@
+{
+  "id": "reqres-env",
+  "name": "ReqRes Environment",
+  "values": [
+    {
+      "key": "baseUrl",
+      "value": "https://reqres.in",
+      "type": "default",
+      "enabled": true
+    }
+  ],
+  "_postman_variable_scope": "environment"
+}
