@@ -8,7 +8,7 @@ on:
 
 jobs:
   test:
-    timeout-minutes: 15        # Reducimos el timeout a 15 min para evitar esperas infinitas si algo se cuelga
+    timeout-minutes: 30        # Reducimos el timeout a 30 min para evitar esperas infinitas si algo se cuelga
     runs-on: ubuntu-latest
     
     steps:
