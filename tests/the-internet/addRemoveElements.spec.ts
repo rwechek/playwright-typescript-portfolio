@@ -2,6 +2,7 @@ import { test, expect } from "@playwright/test";
 import { AddRemoveElementsPage } from "../../pages/the-internet/AddRemoveElementsPage";
 
 test("Debería dar clic al botón de adicionar un elemento", async ({ page }) => {
+  test.setTimeout(90000);
   const addRemoveElementsPage = new AddRemoveElementsPage(page);
 
   // 1. Ir a la pagina

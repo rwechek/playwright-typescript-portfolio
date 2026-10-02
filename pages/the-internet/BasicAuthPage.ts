@@ -9,7 +9,10 @@ export class BasicAuthPage {
 
   async goto() {
     // Opción limpia: inyectar credenciales directamente en la URL para autenticación automática
-    await this.page.goto('https://admin:admin@the-internet.herokuapp.com/basic_auth');
+    await this.page.goto('https://admin:admin@the-internet.herokuapp.com/basic_auth', {
+      waitUntil: "domcontentloaded",
+      timeout: 60000, // Opcional: darle un respiro de 60s solo a la navegación inicial
+    });
   }
 
   // Localizador para el mensaje de éxito que aparece tras autenticarse

@@ -3,6 +3,7 @@ import { test, expect } from '@playwright/test';
 import { DynamicLoadingPage } from '../../pages/the-internet/DynamicLoadingPage';
 
 test('Debería manejar la carga dinámica y mostrar "Hello World!"', async ({ page }) => {
+  test.setTimeout(90000); // Da un respiro exclusivo a esta prueba pesada
   const dynamicPage = new DynamicLoadingPage(page);
 
   // 1. Navegar al Ejemplo 1 de Carga Dinámica
@@ -20,6 +21,7 @@ test('Debería manejar la carga dinámica y mostrar "Hello World!"', async ({ pa
 });
 
 test('Debería manejar la carga dinámica y mostrar "Hello World! a posteriori"', async ({ page }) => {
+  test.setTimeout(90000); // Da un respiro exclusivo a esta prueba pesada
   const dynamicPage = new DynamicLoadingPage(page);
 
   // 1. Navegar al Ejemplo 2 de Carga Dinámica

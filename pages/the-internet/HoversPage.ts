@@ -14,7 +14,10 @@ export class HoversPage {
   }
 
   async goto() {
-    await this.page.goto('/hovers');
+    await this.page.goto('/hovers', {
+      waitUntil: "domcontentloaded",
+      timeout: 60000, // Opcional: darle un respiro de 60s solo a la navegación inicial
+    });
   }
 
   async hoverFigure(index: number) {

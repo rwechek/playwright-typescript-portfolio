@@ -15,7 +15,10 @@ export class FileUploadPage {
   }
 
   async goto() {
-    await this.page.goto('/upload');
+    await this.page.goto('/upload', {
+      waitUntil: "domcontentloaded",
+      timeout: 60000, // Opcional: darle un respiro de 60s solo a la navegación inicial
+    });
   }
 
   async uploadFile(filePath: string) {

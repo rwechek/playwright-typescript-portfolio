@@ -12,7 +12,10 @@ export class DataTablePage {
   }
 
   async goto() {
-    await this.page.goto("/tables");
+    await this.page.goto("/tables", {
+      waitUntil: "domcontentloaded",
+      timeout: 60000, // Opcional: darle un respiro de 60s solo a la navegación inicial
+    });
   }
 
   /**

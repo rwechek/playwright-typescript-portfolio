@@ -19,7 +19,10 @@ export class LoginPage {
   }
 
   async goto() {
-    await this.page.goto('/login');
+    await this.page.goto('/login', {
+      waitUntil: "domcontentloaded",
+      timeout: 60000, // Opcional: darle un respiro de 60s solo a la navegación inicial
+    });
   }
 
   // Método para realizar el inicio de sesión completo

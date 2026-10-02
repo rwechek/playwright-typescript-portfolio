@@ -3,6 +3,7 @@ import { test, expect } from '@playwright/test';
 import { LoginPage } from '../../pages/the-internet/LoginPage';
 
 test('Validar redirección de autenticación usando POM', async ({ page }) => {
+  test.setTimeout(90000);
   const loginPage = new LoginPage(page);
 
   await loginPage.goto();
@@ -11,6 +12,7 @@ test('Validar redirección de autenticación usando POM', async ({ page }) => {
 });
 
 test('Debería iniciar sesión exitosamente con credenciales válidas', async ({ page }) => {
+  test.setTimeout(90000);
   const loginPage = new LoginPage(page);
 
   // 1. Navegar y llegar a la página de login

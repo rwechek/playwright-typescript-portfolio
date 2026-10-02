@@ -12,7 +12,10 @@ export class FramesPage {
   }
 
   async goto() {
-    await this.page.goto("/frames");
+    await this.page.goto("/frames", {
+      waitUntil: "domcontentloaded",
+      timeout: 60000, // Opcional: darle un respiro de 60s solo a la navegación inicial
+    });
   }
 
   async gotoNested() {

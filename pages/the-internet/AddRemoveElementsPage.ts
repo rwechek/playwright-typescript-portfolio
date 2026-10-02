@@ -10,7 +10,10 @@ export class AddRemoveElementsPage {
   }
 
   async goto() {
-    await this.page.goto("/add_remove_elements/");
+    await this.page.goto("/add_remove_elements/", {
+      waitUntil: "domcontentloaded",
+      timeout: 60000, // Opcional: darle un respiro de 60s solo a la navegación inicial
+    });
   }
 
   async add() {

@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test';
 import { FramesPage } from '../../pages/the-internet/FramesPage';
 
 test('Debería interactuar y validar el texto de los diferentes Nested Frames', async ({ page }) => {
+    test.setTimeout(90000); // Da un respiro exclusivo a esta prueba pesada
     const framesPage = new FramesPage(page);
 
     // 1. Ir a la página principal de los frames.
@@ -30,6 +31,7 @@ test('Debería interactuar y validar el texto de los diferentes Nested Frames', 
 });
 
 test('Debería leer y validar el texto existente dentro del iFrame', async ({ page }) => {
+    test.setTimeout(90000); // Da un respiro exclusivo a esta prueba pesada
     const framesPage = new FramesPage(page);
 
     // 1. Navegar a la página

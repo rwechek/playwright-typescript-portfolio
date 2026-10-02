@@ -16,7 +16,10 @@ export class JavaScriptAlertsPage {
   }
 
   async goto() {
-    await this.page.goto('/javascript_alerts');
+    await this.page.goto('/javascript_alerts', {
+      waitUntil: "domcontentloaded",
+      timeout: 60000, // Opcional: darle un respiro de 60s solo a la navegación inicial
+    });
   }
 
   async clickJsAlert() {

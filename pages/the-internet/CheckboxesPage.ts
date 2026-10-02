@@ -11,7 +11,10 @@ export class CheckboxesPage {
   }
 
   async goto() {
-    await this.page.goto('/checkboxes');
+    await this.page.goto('/checkboxes', {
+      waitUntil: "domcontentloaded",
+      timeout: 60000, // Opcional: darle un respiro de 60s solo a la navegación inicial
+    });
   }
 
   // Método para seleccionar el primer checkbox

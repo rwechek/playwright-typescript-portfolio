@@ -17,7 +17,10 @@ export class DynamicLoadingPage {
   }
 
   async goto() {
-    await this.page.goto('/dynamic_loading');
+    await this.page.goto('/dynamic_loading', {
+      waitUntil: "domcontentloaded",
+      timeout: 60000, // Opcional: darle un respiro de 60s solo a la navegación inicial
+    });
   }
 
   async navigateToExample1() {

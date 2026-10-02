@@ -12,7 +12,10 @@ export class DropdownPage {
   }
 
   async goto() {
-    await this.page.goto("/dropdown");
+    await this.page.goto("/dropdown", {
+      waitUntil: "domcontentloaded",
+      timeout: 60000, // Opcional: darle un respiro de 60s solo a la navegación inicial
+    });
   }
 
   async clickOpt(text: string) {

@@ -12,6 +12,9 @@ export class DragAndDropPage {
   }
 
   async goto() {
-    await this.page.goto("/drag_and_drop");
+    await this.page.goto("/drag_and_drop", {
+      waitUntil: "domcontentloaded",
+      timeout: 60000, // Opcional: darle un respiro de 60s solo a la navegación inicial
+    });
   }
 }

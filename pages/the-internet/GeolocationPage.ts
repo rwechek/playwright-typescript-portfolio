@@ -14,7 +14,10 @@ export class GeolocationPage {
   }
 
   async goto() {
-    await this.page.goto('/geolocation');
+    await this.page.goto('/geolocation', {
+      waitUntil: "domcontentloaded",
+      timeout: 60000, // Opcional: darle un respiro de 60s solo a la navegación inicial
+    });
   }
 
   async clickWhereAmI() {

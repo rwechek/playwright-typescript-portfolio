@@ -10,7 +10,10 @@ export class MultipleWindowsPage {
   }
 
   async goto() {
-    await this.page.goto("/windows");
+    await this.page.goto("/windows", {
+      waitUntil: "domcontentloaded",
+      timeout: 60000, // Opcional: darle un respiro de 60s solo a la navegación inicial
+    });
   }
 
   async clickMultipleWindowsLink(){

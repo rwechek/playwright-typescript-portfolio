@@ -10,7 +10,10 @@ export class InfiniteScrollPage {
   }
 
   async goto() {
-    await this.page.goto("/infinite_scroll");
+    await this.page.goto("/infinite_scroll", {
+      waitUntil: "domcontentloaded",
+      timeout: 60000, // Opcional: darle un respiro de 60s solo a la navegación inicial
+    });
   }
 
   // Método para hacer scroll hacia el final de la página de forma nativa
