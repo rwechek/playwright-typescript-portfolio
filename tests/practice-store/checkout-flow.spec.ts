@@ -43,7 +43,6 @@ test.describe("Practice Software Testing - Flujo de Compra y Checkout", () => {
 
     // 3. Ir a la vista del carrito y validar subtotal
     await cartPage.goto();
-    await page.waitForLoadState("networkidle");
 
     const subtotalText = await cartPage.getSubtotal();
     expect(subtotalText.length).toBeGreaterThan(0);
