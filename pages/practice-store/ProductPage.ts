@@ -1,4 +1,4 @@
-import { Page, Locator } from '@playwright/test';
+import { Page, Locator, expect } from '@playwright/test';
 
 export class ProductPage {
   readonly page: Page;
@@ -27,11 +27,15 @@ export class ProductPage {
     await this.addToCartButton.scrollIntoViewIfNeeded();
     await this.addToCartButton.click();
     
-    // Espera segura basada en el contenido del contador del carrito
-    await this.page.waitForFunction(
-      (elemento) => elemento.textContent.trim() !== "" && elemento.textContent.trim() !== "0", 
-      await this.cartBadge.elementHandle()
-    );
+    // Espera segura y resiliente en CI usando expect.poll en lugar de elementHandle
+    await expect.poll(async () => {
+      const text = await this.cartBadge.textContent();
+      const trimmed = text ? text.trim() : '';
+      return trimmed !== '' && trimmed !== '0';
+    }, {
+      timeout: 15000,
+      message: 'El contador del carrito no se actualizó tras agregar el producto'
+    }).toBe(true);
   }
 
   /**
@@ -39,6 +43,5 @@ export class ProductPage {
    */
   async goToCart(): Promise<void> {
     await this.cartIcon.click();
-    await this.page.waitForLoadState('networkidle');
   }
 }
