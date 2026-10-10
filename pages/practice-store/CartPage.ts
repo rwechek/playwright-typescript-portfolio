@@ -38,6 +38,5 @@ export class CartPage {
   async proceedToCheckout(): Promise<void> {
     await expect(this.proceedCheckoutButton).toBeVisible({ timeout: 5000 });
     await this.proceedCheckoutButton.click();
-    await this.page.waitForLoadState('networkidle');
   }
 }

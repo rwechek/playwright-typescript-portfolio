@@ -47,23 +47,48 @@ test.describe("Practice Software Testing - Catálogo y ordenamiento", () => {
   }) => {
     // 1. VALIDAR ORDENAMIENTO Alto-Bajo (Descendente)
     await homePage.clickSortByPriceHighLow();
-    await page.waitForLoadState("networkidle");
 
-    await expect(homePage.productCardTitles.first()).toContainText(
-      "Drawer Tool Cabinet",
-    );
+    /*
+     * Reintentos nativos con expect.poll(): La función anónima se reintentará de forma
+     * automática hasta que el texto devuelto contenga "Drawer Tool Cabinet" o se alcance
+     * el tiempo límite de 5 segundos. Esto le da el respiro exacto a Angular para procesar
+     * la respuesta de la API y actualizar el DOM tras el clic en el filtro, eliminando
+     * el flakiness.
+     *
+     */
+    await expect
+      .poll(
+        async () => {
+          return await homePage.productCardTitles.first().textContent();
+        },
+        {
+          timeout: 5000,
+          message:
+            "Esperando a que la lista se ordene por precio de alto a bajo",
+        },
+      )
+      .toContain("Drawer Tool Cabinet");
+
     await expect(homePage.productCardTitles.nth(1)).toContainText(
       "Tool Cabinet",
     );
 
     // 2. VALIDAR ORDENAMIENTO Bajo-Alto (Ascendente)
     await homePage.clickSortByPriceLowHigh();
-    await page.waitForTimeout(1000);
-    await page.waitForLoadState("networkidle");
 
-    await expect(homePage.productCardTitles.first()).not.toContainText(
-      "Drawer Tool Cabinet",
-    );
+    await expect
+      .poll(
+        async () => {
+          return await homePage.productCardTitles.first();
+        },
+        {
+          timeout: 5000,
+          message:
+            "Esperando a que la lista se ordene por precio de bajo a alto",
+        },
+      )
+      .not.toContain("Drawer Tool Cabinet");
+
     await expect(homePage.productCardTitles.first()).toContainText("Washers");
   });
 
@@ -72,21 +97,38 @@ test.describe("Practice Software Testing - Catálogo y ordenamiento", () => {
   }) => {
     // 1. VALIDAR ORDENAMIENTO Co2 Bajo (Ascendente)
     await homePage.clickSortByCo2Asc();
-    await page.waitForLoadState("networkidle");
 
-    await expect(homePage.productCardTitles.first()).toContainText("Wood Saw");
+    await expect
+      .poll(
+        async () => {
+          return await homePage.productCardTitles.first().textContent();
+        },
+        {
+          timeout: 5000,
+          message: "Esperando a que la lista se ordene por Co2 alto o bajo",
+        },
+      )
+      .toContain("Wood Saw");
+
     await expect(homePage.productCardTitles.nth(1)).toContainText(
       "Safety Goggles",
     );
 
     // 2. VALIDAR ORDENAMIENTO Co2 Alto (Descendente)
     await homePage.clickSortByCo2Desc();
-    await page.waitForTimeout(1000);
-    await page.waitForLoadState("networkidle");
 
-    await expect(homePage.productCardTitles.first()).not.toContainText(
-      "Wood Saw",
-    );
+    await expect
+      .poll(
+        async () => {
+          return await homePage.productCardTitles.first();
+        },
+        {
+          timeout: 5000,
+          message: "Esperando a que la lista se ordene por Co2 alto o bajo",
+        },
+      )
+      .not.toContain("Wood Saw");
+
     await expect(homePage.productCardTitles.first()).toContainText(
       "Cordless Drill 12V",
     );
@@ -97,7 +139,6 @@ test.describe("Practice Software Testing - Catálogo y ordenamiento", () => {
   }) => {
     await homePage.searchProduct("Hammer");
     await page.waitForTimeout(1000);
-    await page.waitForLoadState("networkidle");
 
     await expect(homePage.productCardTitles.first()).toContainText("Hammer");
   });
@@ -122,7 +163,6 @@ test.describe("Practice Software Testing - Catálogo y ordenamiento", () => {
     page,
   }) => {
     await homePage.clickFilterByEcoFriendly();
-    await page.waitForLoadState("networkidle");
     await page.waitForTimeout(500);
 
     const calificacionesEcologicas = await homePage.getEcoFriendlyRatings();
@@ -141,7 +181,6 @@ test.describe("Practice Software Testing - Catálogo y ordenamiento", () => {
     await homePage.moveMinSlider("Right", 30);
 
     await page.waitForTimeout(2000);
-    await page.waitForLoadState("networkidle");
 
     const preciosProductos = await homePage.getProductPrices();
     expect(preciosProductos.length).toBeGreaterThan(0);
