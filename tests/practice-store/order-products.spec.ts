@@ -79,7 +79,7 @@ test.describe("Practice Software Testing - Catálogo y ordenamiento", () => {
     await expect
       .poll(
         async () => {
-          return await homePage.productCardTitles.first();
+          return await homePage.productCardTitles.first() ?? "";
         },
         {
           timeout: 5000,
@@ -120,7 +120,7 @@ test.describe("Practice Software Testing - Catálogo y ordenamiento", () => {
     await expect
       .poll(
         async () => {
-          return await homePage.productCardTitles.first();
+          return await homePage.productCardTitles.first() ?? "";
         },
         {
           timeout: 5000,

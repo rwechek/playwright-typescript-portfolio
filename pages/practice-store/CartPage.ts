@@ -1,4 +1,4 @@
-import { Page, Locator, expect } from '@playwright/test';
+import { Page, Locator, expect } from "@playwright/test";
 
 export class CartPage {
   readonly page: Page;
@@ -10,10 +10,10 @@ export class CartPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.cartItemRows = page.locator('tbody tr');
-    this.itemPrice = page.locator('tbody tr td:nth-child(2)');
-    this.itemQuantityInput = page.locator('tbody tr td:nth-child(3) input');
-    this.itemSubtotal = page.locator('tbody tr td:nth-child(4)');
+    this.cartItemRows = page.locator("tbody tr");
+    this.itemPrice = page.locator("tbody tr td:nth-child(2)");
+    this.itemQuantityInput = page.locator("tbody tr td:nth-child(3) input");
+    this.itemSubtotal = page.locator("tbody tr td:nth-child(4)");
     this.proceedCheckoutButton = page.locator('[data-test="proceed-1"]');
   }
 
@@ -21,15 +21,21 @@ export class CartPage {
    * Navega a la vista del carrito de compras y asegura la carga de red
    */
   async goto(): Promise<void> {
-    await this.page.goto('/checkout');
+    await this.page.goto("/checkout");
   }
 
   /**
    * Obtiene el texto del subtotal de forma limpia
    */
   async getSubtotal(): Promise<string> {
+    // 1. Asegurarnos de que al menos una fila del carrito ya se renderizó en el DOM
+    await expect(this.page.locator("tbody tr").first()).toBeVisible({
+      timeout: 15000,
+    });
+
+    // 2. Validar y extraer el subtotal con seguridad
     await expect(this.itemSubtotal).toBeVisible({ timeout: 15000 });
-    return (await this.itemSubtotal.textContent())?.trim() || '';
+    return (await this.itemSubtotal.textContent())?.trim() || "";
   }
 
   /**
