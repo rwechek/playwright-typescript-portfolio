@@ -22,7 +22,6 @@ export class CartPage {
    */
   async goto(): Promise<void> {
     await this.page.goto('/checkout');
-    await this.page.waitForLoadState('networkidle');
   }
 
   /**
