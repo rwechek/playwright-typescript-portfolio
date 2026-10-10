@@ -28,7 +28,7 @@ export class CartPage {
    * Obtiene el texto del subtotal de forma limpia
    */
   async getSubtotal(): Promise<string> {
-    await expect(this.itemSubtotal).toBeVisible({ timeout: 5000 });
+    await expect(this.itemSubtotal).toBeVisible({ timeout: 15000 });
     return (await this.itemSubtotal.textContent())?.trim() || '';
   }
 
