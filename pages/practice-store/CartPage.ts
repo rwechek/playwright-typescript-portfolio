@@ -2,6 +2,7 @@ import { Page, Locator, expect } from "@playwright/test";
 
 export class CartPage {
   readonly page: Page;
+  readonly linkCartpage: Locator;
   readonly cartItemRows: Locator;
   readonly itemPrice: Locator;
   readonly itemQuantityInput: Locator;
@@ -15,13 +16,14 @@ export class CartPage {
     this.itemQuantityInput = page.locator("tbody tr td:nth-child(3) input");
     this.itemSubtotal = page.locator("tbody tr td:nth-child(4)");
     this.proceedCheckoutButton = page.locator('[data-test="proceed-1"]');
+    this.linkCartpage = page.getByTestId('nav-cart');
   }
 
   /**
    * Navega a la vista del carrito de compras y asegura la carga de red
    */
   async goto(): Promise<void> {
-    await this.page.goto("/checkout");
+    await this.linkCartpage.click();
   }
 
   /**
