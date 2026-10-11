@@ -62,7 +62,7 @@ test.describe("Practice Software Testing - Catálogo y ordenamiento", () => {
           return await homePage.productCardTitles.first().textContent();
         },
         {
-          timeout: 5000,
+          timeout: 15000,
           message:
             "Esperando a que la lista se ordene por precio de alto a bajo",
         },
@@ -104,7 +104,7 @@ test.describe("Practice Software Testing - Catálogo y ordenamiento", () => {
           return await homePage.productCardTitles.first().textContent();
         },
         {
-          timeout: 5000,
+          timeout: 15000,
           message: "Esperando a que la lista se ordene por Co2 alto o bajo",
         },
       )

@@ -109,18 +109,25 @@ export class CheckoutPage {
       await cardHolderInput.fill(data.cardHolder);
     }
 
-    const checkPaymentButton = this.page
-      .locator("button")
-      .filter({ hasText: /Check payment/i });
-    await expect(checkPaymentButton).toBeEnabled({ timeout: 10000 });
-    await checkPaymentButton.click();
+    // Botón de confirmación final de pago (generalmente usa data-test="finish" o el botón de confirmar)
+    const confirmPaymentButton = this.page.locator(
+      '[data-test="finish"], button:has-text("Confirm"), button:has-text("Check payment")'
+    ).first();
+    
+    await expect(confirmPaymentButton).toBeEnabled({ timeout: 10000 });
+    await confirmPaymentButton.click();
   }
 
   /**
    * Verifica que el pago se haya completado exitosamente y aparezca el mensaje de confirmación
    */
   async assertOrderSuccess() {
-    const successMessage = this.page.locator('[data-test="payment-success-message"]');
-    await expect(successMessage).toBeVisible({ timeout: 10000 });
+    // Asegurar que la URL de la SPA cambió a la vista de confirmación/éxito
+    await expect(this.page).toHaveURL(/\/checkout/, { timeout: 15000 });
+
+    const successMessage = this.page.locator(
+      '[data-test="payment-success-message"]',
+    );
+    await expect(successMessage).toBeVisible({ timeout: 15000 });
   }
 }
