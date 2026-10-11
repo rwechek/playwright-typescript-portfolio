@@ -16,7 +16,7 @@ export class CartPage {
     this.itemQuantityInput = page.locator("tbody tr td:nth-child(3) input");
     this.itemSubtotal = page.locator("tbody tr td:nth-child(4)");
     this.proceedCheckoutButton = page.locator('[data-test="proceed-1"]');
-    this.linkCartpage = page.getByTestId('nav-cart');
+    this.linkCartpage = page.locator('[data-test="nav-cart"]');
   }
 
   /**
