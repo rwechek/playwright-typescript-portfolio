@@ -39,7 +39,19 @@ test.describe("Practice Software Testing - Flujo de Compra y Checkout", () => {
 
     // 2. Agregar al carrito y validar contador
     await productPage.addToCart();
-    await expect(productPage.cartBadge).toHaveText("1");
+
+    // 2. Esperar a que el contador del carrito se actualice (confirmando que la API respondió)
+    await expect
+      .poll(
+        async () => {
+          return (await productPage.cartBadge.textContent()) ?? "";
+        },
+        {
+          timeout: 5000,
+          message: "Esperando a que el contador del carrito se actualice a 1",
+        },
+      )
+      .toBe("1");
 
     // 3. Ir a la vista del carrito y validar subtotal
     await cartPage.goto();
