@@ -31,7 +31,10 @@ jobs:
       run: npx newman run postman/petstore.collection.json -e postman/petstore3.environment.json
       
     - name: Run Playwright tests
-      run: npx playwright test  # Ejecutamos todos los proyectos
+      env:
+        TEST_CUSTOMER_EMAIL: ${{ secrets.TEST_CUSTOMER_EMAIL }}
+        TEST_CUSTOMER_PASSWORD: ${{ secrets.TEST_CUSTOMER_PASSWORD }}
+      run: npx playwright test
       
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
