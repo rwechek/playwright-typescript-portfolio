@@ -24,10 +24,14 @@ export class ProductPage {
    * a que el contador de la UI se actualice con el nuevo producto.
    */
   async addToCart(): Promise<void> {
+    // 1. Asegurar explícitamente que estamos en la vista de detalle y el botón es visible
+    await expect(this.addToCartButton).toBeVisible({ timeout: 15000 });
+
+    // 2. Hacer scroll y clic de forma segura
     await this.addToCartButton.scrollIntoViewIfNeeded();
     await this.addToCartButton.click();
     
-    // Espera segura y resiliente en CI usando expect.poll en lugar de elementHandle
+    // 3. Espera segura y resiliente en CI usando expect.poll
     await expect.poll(async () => {
       const text = await this.cartBadge.textContent();
       const trimmed = text ? text.trim() : '';

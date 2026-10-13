@@ -60,6 +60,27 @@ export class HomePage {
   }
 
   /**
+   * Hace clic en un producto del catálogo según su índice (base 0)
+   */
+  /**
+   * Hace clic en un producto del catálogo según su índice (base 0) de forma totalmente sincronizada con Angular
+   */
+  async clickProductByIndex(index: number): Promise<void> {
+    const targetTitle = this.productCardTitles.nth(index);
+
+    // 1. Esperamos inteligentemente a que el título en ese índice tenga texto real
+    await expect(targetTitle).not.toBeEmpty({ timeout: 10000 });
+
+    // 2. Hacemos clic en el título ya listo y activo
+    await targetTitle.click();
+
+    // 3. Validamos con polling automático que la SPA actualizó la URL al detalle del producto
+    await expect(this.page).toHaveURL(/\/product\/[A-Z0-9]+/, {
+      timeout: 10000,
+    });
+  }
+
+  /**
    * Realiza la búsqueda de un producto utilizando el input y el botón centralizado
    */
   async searchProduct(productName: string) {
