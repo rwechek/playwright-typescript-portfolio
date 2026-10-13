@@ -42,6 +42,12 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
+    // 1. Proyecto de Setup (Se ejecuta antes de las pruebas de la tienda)
+    {
+      name: 'auth-setup',
+      testMatch: /auth\.setup\.ts/,
+    },
+
     {
       name: 'practice-store-chromium',
       testDir: './tests/practice-store',
