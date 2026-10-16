@@ -14,5 +14,10 @@
     "dotenv": "^18.0.6",
     "newman": "^6.2.2",
     "openapi-to-postmanv2": "^6.3.3"
+  },
+  "dependencies": {
+    "@ai-sdk/google": "^4.0.95",
+    "ai": "^7.0.140",
+    "zod": "^4.6.7"
   }
 }
