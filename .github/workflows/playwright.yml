@@ -8,7 +8,7 @@ on:
 
 jobs:
   test:
-    timeout-minutes: 30        # Reducimos el timeout a 30 min para evitar esperas infinitas si algo se cuelga
+    timeout-minutes: 30       # Reducimos el timeout a 30 min para evitar esperas infinitas si algo se cuelga
     runs-on: ubuntu-latest
     
     steps:
@@ -28,15 +28,26 @@ jobs:
       run: npx newman run postman/reqres.collection.json -e postman/reqres.environment.json
 
     - name: Run API Tests with Newman Petstore3
-      run: npx newman run postman/petstore.collection.json -e postman/petstore3.environment.json
+      run: npx newman run postman/petstore3.collection.json -e postman/petstore3.environment.json
       
     - name: Run Playwright tests
       env:
         TEST_CUSTOMER_EMAIL: ${{ secrets.TEST_CUSTOMER_EMAIL }}
         TEST_CUSTOMER_PASSWORD: ${{ secrets.TEST_CUSTOMER_PASSWORD }}
         GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-      run: npx playwright test --grep "@ci"
+        PLAYWRIGHT_JSON_OUTPUT_FILE: test-results.json
+      run: npx playwright test --grep "@ci" --reporter=html,json || true
       
+    # 🤖 AQUÍ INTEGRAMOS TU SOLUCIÓN PRIVADA V1.1.0
+    - name: Run AI Failure Analyzer
+      uses: rwechek/ai-failure-analyzer@v1.1.0
+      with:
+        report-path: 'test-results.json'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        AI_PROVIDER: 'google'
+        GOOGLE_GENERATIVE_AI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
