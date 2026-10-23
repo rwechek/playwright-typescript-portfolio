@@ -11,7 +11,7 @@ test.describe('Pruebas de Autenticación en SauceDemo', () => {
 
   test('Debe iniciar sesión exitosamente con el usuario estándar @ci', async ({ page }) => {
     // 1. Iniciar sesión con credenciales válidas
-    await loginPage.login('standard_use', 'secret_sauce');
+    await loginPage.login('standard_user', 'secret_sauce');
 
     // 2. Aserción: Verificar que la URL cambió al inventario
     await expect(page).toHaveURL(/.*inventory.html/);
