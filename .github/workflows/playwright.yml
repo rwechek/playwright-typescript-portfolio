@@ -8,8 +8,13 @@ on:
 
 jobs:
   test:
-    timeout-minutes: 30        # Reducimos el timeout a 30 min para evitar esperas infinitas si algo se cuelga
+    timeout-minutes: 30       # Reducimos el timeout a 30 min para evitar esperas infinitas si algo se cuelga
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
     
     steps:
     - uses: actions/checkout@v4
@@ -35,8 +40,19 @@ jobs:
         TEST_CUSTOMER_EMAIL: ${{ secrets.TEST_CUSTOMER_EMAIL }}
         TEST_CUSTOMER_PASSWORD: ${{ secrets.TEST_CUSTOMER_PASSWORD }}
         GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-      run: npx playwright test --grep "@ci"
+        PLAYWRIGHT_JSON_OUTPUT_FILE: test-results.json
+      run: npx playwright test --grep "@ci" --reporter=html,json || true
       
+    # 🤖 AQUÍ INTEGRAMOS TU SOLUCIÓN PRIVADA V1.1.0
+    - name: Run AI Failure Analyzer
+      uses: rwechek/ai-failure-analyzer@v1.1.0
+      with:
+        report-path: 'test-results.json'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        AI_PROVIDER: 'google'
+        GOOGLE_GENERATIVE_AI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:

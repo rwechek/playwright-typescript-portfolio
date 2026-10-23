@@ -9,7 +9,7 @@ test.describe('Pruebas de Autenticación en SauceDemo', () => {
     await loginPage.navigate();
   });
 
-  test('Debe iniciar sesión exitosamente con el usuario estándar', async ({ page }) => {
+  test('Debe iniciar sesión exitosamente con el usuario estándar @ci', async ({ page }) => {
     // 1. Iniciar sesión con credenciales válidas
     await loginPage.login('standard_user', 'secret_sauce');
 
