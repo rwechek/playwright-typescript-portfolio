@@ -10,6 +10,11 @@ jobs:
   test:
     timeout-minutes: 30       # Reducimos el timeout a 30 min para evitar esperas infinitas si algo se cuelga
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
     
     steps:
     - uses: actions/checkout@v4
